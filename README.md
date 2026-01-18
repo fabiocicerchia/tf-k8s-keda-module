@@ -14,7 +14,7 @@ KEDA enables autoscaling of workloads based on events and external metrics, not 
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+  source = "git::https://github.com/fabiocicerchia/terraform-k8s-keda-module.git?ref=main"
 
   kubeconfig_path = "~/.kube/config"
   release_name    = "kedacore"
@@ -56,7 +56,7 @@ module "keda" {
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+  source = "git::https://github.com/fabiocicerchia/terraform-k8s-keda-module.git?ref=main"
 
   kubeconfig_path = "~/.kube/config"
   namespace       = "keda"
@@ -67,7 +67,7 @@ module "keda" {
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+  source = "git::https://github.com/fabiocicerchia/terraform-k8s-keda-module.git?ref=main"
 
   kubeconfig_path = "~/.kube/config"
   deploy_example  = false
@@ -78,7 +78,7 @@ module "keda" {
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+  source = "git::https://github.com/fabiocicerchia/terraform-k8s-keda-module.git?ref=main"
 
   kubeconfig_path = "~/.kube/config"
   chart_version   = "2.12.0"
