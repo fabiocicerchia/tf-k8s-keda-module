@@ -1,27 +1,11 @@
-provider "helm" {
-  kubernetes = {
-    config_path = var.kubeconfig_path
-  }
-}
+module "keda" {
+  source = "./modules/keda"
 
-resource "helm_release" "keda" {
-  name       = var.release_name
-  repository = "https://kedacore.github.io/charts"
-  chart      = "kedacore/keda"
-  version    = var.chart_version != "" ? var.chart_version : null
-
-  create_namespace = true
-  namespace        = var.namespace
-  replace          = true
-
-  values = [var.values]
-}
-
-resource "null_resource" "deploy_example" {
-  count      = var.deploy_example ? 1 : 0
-  depends_on = [helm_release.keda]
-
-  provisioner "local-exec" {
-    command = "kubectl apply -f ${var.manifest_path}"
-  }
+  kubeconfig_path = var.kubeconfig_path
+  release_name    = var.release_name
+  namespace       = var.namespace
+  values          = var.values
+  deploy_example  = var.deploy_example
+  manifest_path   = var.manifest_path
+  chart_version   = var.chart_version
 }
