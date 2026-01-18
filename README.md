@@ -1,0 +1,102 @@
+# KEDA Autoscaling Module
+
+Terraform module to deploy KEDA (Kubernetes Event Driven Autoscaling) on Kubernetes using Helm.
+
+## Overview
+
+KEDA enables autoscaling of workloads based on events and external metrics, not just CPU/memory. It supports multiple scalers including:
+
+- **Event-based scaling**: Scale based on external events
+- **Custom metrics**: Scale on custom application metrics
+- **Example deployments**: Optional example KEDA scalers for testing
+
+## Quick Start
+
+```hcl
+module "keda" {
+  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+
+  kubeconfig_path = "~/.kube/config"
+  release_name    = "kedacore"
+  namespace       = "keda"
+  deploy_example  = true
+}
+```
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| `kubeconfig_path` | Path to the kubeconfig file | `string` | `"~/.kube/config"` | no |
+| `release_name` | Helm release name for KEDA | `string` | `"kedacore"` | no |
+| `namespace` | Kubernetes namespace for KEDA | `string` | `"keda"` | no |
+| `chart_version` | Helm chart version (empty string for latest) | `string` | `""` | no |
+| `values` | Helm values for KEDA deployment | `any` | `{}` | no |
+| `deploy_example` | Deploy KEDA example manifests | `bool` | `true` | no |
+| `manifest_path` | Path to KEDA manifest file | `string` | `"keda.yaml"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| `namespace` | Kubernetes namespace where KEDA is deployed |
+| `release_name` | Helm release name of KEDA |
+| `chart_version` | Chart version of KEDA deployment |
+
+## Requirements
+
+- Terraform >= 1.0
+- Helm >= 2.0
+- Kubernetes v1.24+
+- kubectl configured to access your cluster
+
+## Usage
+
+### Basic Deployment
+
+```hcl
+module "keda" {
+  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+
+  kubeconfig_path = "~/.kube/config"
+  namespace       = "keda"
+}
+```
+
+### Without Example Deployments
+
+```hcl
+module "keda" {
+  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+
+  kubeconfig_path = "~/.kube/config"
+  deploy_example  = false
+}
+```
+
+### Pin Chart Version
+
+```hcl
+module "keda" {
+  source = "git::https://github.com/fabiocicerchia/tf-k8s-keda-module.git?ref=main"
+
+  kubeconfig_path = "~/.kube/config"
+  chart_version   = "2.12.0"
+}
+```
+
+## Verify Deployment
+
+```bash
+# Check KEDA deployment
+kubectl get pods -n keda
+
+# View ScaledObjects
+kubectl get scaledobjects -A
+```
+
+## Resources
+
+- [KEDA Documentation](https://keda.sh/)
+- [KEDA Helm Chart](https://github.com/kedacore/charts)
+- [KEDA Scalers Reference](https://keda.sh/docs/latest/scalers/)
