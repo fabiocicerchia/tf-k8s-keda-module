@@ -11,7 +11,6 @@ terraform {
 module "keda" {
   source = "../"
 
-  kubeconfig_path = "~/.kube/config"
   release_name    = "keda"
   namespace       = "keda-system"
   chart_version   = "2.14.0"

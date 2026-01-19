@@ -1,20 +1,15 @@
-provider "helm" {
-  kubernetes = {
-    config_path = var.kubeconfig_path
-  }
-}
-
 resource "helm_release" "keda" {
   name       = var.release_name
   repository = "https://kedacore.github.io/charts"
-  chart      = "kedacore/keda"
+  chart      = "keda"
   version    = var.chart_version != "" ? var.chart_version : null
 
-  create_namespace = true
-  namespace        = var.namespace
-  replace          = true
+  dependency_update = true
+  create_namespace  = true
+  namespace         = var.namespace
+  replace           = true
 
-  values = [var.values]
+  values = [yamlencode(var.values)]
 }
 
 resource "null_resource" "deploy_example" {

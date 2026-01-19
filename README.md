@@ -16,7 +16,6 @@ KEDA enables autoscaling of workloads based on events and external metrics, not 
 module "keda" {
   source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
 
-  kubeconfig_path = "~/.kube/config"
   release_name    = "kedacore"
   namespace       = "keda"
   deploy_example  = true
@@ -27,7 +26,6 @@ module "keda" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| `kubeconfig_path` | Path to the kubeconfig file | `string` | `"~/.kube/config"` | no |
 | `release_name` | Helm release name for KEDA | `string` | `"kedacore"` | no |
 | `namespace` | Kubernetes namespace for KEDA | `string` | `"keda"` | no |
 | `chart_version` | Helm chart version (empty string for latest) | `string` | `""` | no |
@@ -58,7 +56,6 @@ module "keda" {
 module "keda" {
   source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
 
-  kubeconfig_path = "~/.kube/config"
   namespace       = "keda"
 }
 ```
@@ -69,7 +66,6 @@ module "keda" {
 module "keda" {
   source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
 
-  kubeconfig_path = "~/.kube/config"
   deploy_example  = false
 }
 ```
@@ -80,7 +76,6 @@ module "keda" {
 module "keda" {
   source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
 
-  kubeconfig_path = "~/.kube/config"
   chart_version   = "2.12.0"
 }
 ```
