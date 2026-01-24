@@ -14,7 +14,7 @@ KEDA enables autoscaling of workloads based on events and external metrics, not 
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
+  source = "fabiocicerchia/keda/helm"
 
   release_name    = "kedacore"
   namespace       = "keda"
@@ -54,7 +54,7 @@ module "keda" {
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
+  source = "fabiocicerchia/keda/helm"
 
   namespace       = "keda"
 }
@@ -64,7 +64,7 @@ module "keda" {
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
+  source = "fabiocicerchia/keda/helm"
 
   deploy_example  = false
 }
@@ -74,7 +74,7 @@ module "keda" {
 
 ```hcl
 module "keda" {
-  source = "git::https://github.com/fabiocicerchia/terraform-helm-keda.git?ref=main"
+  source = "fabiocicerchia/keda/helm"
 
   chart_version   = "2.12.0"
 }
