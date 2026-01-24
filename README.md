@@ -1,4 +1,4 @@
-# KEDA Autoscaling Module
+# Terraform Module for KEDA
 
 Terraform module to deploy KEDA (Kubernetes Event Driven Autoscaling) on Kubernetes using Helm.
 
@@ -43,7 +43,7 @@ module "keda" {
 
 ## Requirements
 
-- Terraform >= 1.0
+- Terraform >= 1.0 or OpenTofu >= 1.6
 - Helm >= 2.0
 - Kubernetes v1.24+
 - kubectl configured to access your cluster
@@ -95,3 +95,7 @@ kubectl get scaledobjects -A
 - [KEDA Documentation](https://keda.sh/)
 - [KEDA Helm Chart](https://github.com/kedacore/charts)
 - [KEDA Scalers Reference](https://keda.sh/docs/latest/scalers/)
+
+## License
+
+MIT
