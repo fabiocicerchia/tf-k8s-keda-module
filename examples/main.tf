@@ -11,9 +11,9 @@ terraform {
 module "keda" {
   source = "../"
 
-  release_name    = "keda"
-  namespace       = "keda-system"
-  chart_version   = "2.14.0"
+  release_name  = "keda"
+  namespace     = "keda-system"
+  chart_version = "2.14.0"
 
   values = yamlencode({
     resources = {
@@ -40,6 +40,6 @@ module "keda" {
     }
   })
 
-  deploy_example  = false
-  manifest_path   = ""
+  deploy_example = false
+  manifest_path  = ""
 }
