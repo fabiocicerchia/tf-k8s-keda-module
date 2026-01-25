@@ -48,6 +48,10 @@ module "keda" {
 - Kubernetes v1.24+
 - kubectl configured to access your cluster
 
+### Dependencies
+
+**Important:** KEDA requires Prometheus for metrics-based scaling. KEDA's `ScaledObject` resources need to reference Prometheus for metrics-based autoscaling. Ensure you have Prometheus deployed in your cluster before deploying KEDA.
+
 ## Usage
 
 ### Basic Deployment
