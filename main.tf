@@ -11,12 +11,3 @@ resource "helm_release" "keda" {
 
   values = [yamlencode(var.values)]
 }
-
-resource "null_resource" "deploy_example" {
-  count      = var.deploy_example ? 1 : 0
-  depends_on = [helm_release.keda]
-
-  provisioner "local-exec" {
-    command = "kubectl apply -f ${var.manifest_path}"
-  }
-}

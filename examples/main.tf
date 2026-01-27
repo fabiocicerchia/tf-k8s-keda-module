@@ -39,7 +39,4 @@ module "keda" {
       }
     }
   })
-
-  deploy_example = false
-  manifest_path  = ""
 }

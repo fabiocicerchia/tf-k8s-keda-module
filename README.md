@@ -18,7 +18,6 @@ module "keda" {
 
   release_name    = "kedacore"
   namespace       = "keda"
-  deploy_example  = true
 }
 ```
 
@@ -30,8 +29,6 @@ module "keda" {
 | `namespace` | Kubernetes namespace for KEDA | `string` | `"keda"` | no |
 | `chart_version` | Helm chart version (empty string for latest) | `string` | `""` | no |
 | `values` | Helm values for KEDA deployment | `any` | `{}` | no |
-| `deploy_example` | Deploy KEDA example manifests | `bool` | `true` | no |
-| `manifest_path` | Path to KEDA manifest file | `string` | `"keda.yaml"` | no |
 
 ## Outputs
 
@@ -64,16 +61,6 @@ module "keda" {
 }
 ```
 
-### Without Example Deployments
-
-```hcl
-module "keda" {
-  source = "fabiocicerchia/keda/helm"
-
-  deploy_example  = false
-}
-```
-
 ### Pin Chart Version
 
 ```hcl
@@ -89,9 +76,6 @@ module "keda" {
 ```bash
 # Check KEDA deployment
 kubectl get pods -n keda
-
-# View ScaledObjects
-kubectl get scaledobjects -A
 ```
 
 ## Resources

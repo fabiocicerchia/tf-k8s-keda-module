@@ -21,15 +21,3 @@ variable "values" {
   type        = any
   default     = {}
 }
-
-variable "deploy_example" {
-  description = "Deploy KEDA example manifests"
-  type        = bool
-  default     = true
-}
-
-variable "manifest_path" {
-  description = "Path to KEDA manifest file"
-  type        = string
-  default     = "keda.yaml"
-}
